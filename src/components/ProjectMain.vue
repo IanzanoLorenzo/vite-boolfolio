@@ -8,7 +8,7 @@ export default{
     return {
       store
     }
-  }
+  },
 };
 </script>
 
@@ -35,15 +35,15 @@ export default{
       </div>
       <div class="col-12 d-flex justify-content-center">
         <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+          <li class="page-item" :class="store.currentPage === 1 ? 'disabled' : ''">
+            <button class="page-link" href="#" aria-label="Previous" @click="$emit('previous')">
               <span aria-hidden="true">Previous</span>
-            </a>
+            </button>
           </li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+          <li class="page-item" :class="store.currentPage === store.totalPages ? 'disabled' : ''">
+            <button class="page-link" href="#" aria-label="Next" @click="$emit('next')">
               <span aria-hidden="true">Next</span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>
