@@ -4,5 +4,6 @@ export const store = reactive({
     basicUrl: 'http://127.0.0.1:8000',
     projects: [],
     currentPage : 1,
-    totalPages : ''
+    totalPages : '',
+    loading: true
 })

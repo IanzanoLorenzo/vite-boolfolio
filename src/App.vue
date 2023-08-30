@@ -2,9 +2,11 @@
 import axios from 'axios';
 import {store} from './store';
 import ProjectMain from "./components/ProjectMain.vue";
+import LoadingAppVue from './components/LoadingApp.vue';
 export default{
   components:{
     ProjectMain,
+    LoadingAppVue
   },
   data(){
     return {
@@ -26,7 +28,7 @@ export default{
         store.projects = risp.data.response.data;
         store.currentPage = risp.data.response.current_page;
         store.totalPages = risp.data.response.last_page;
-        console.log(store.projects);
+        store.loading = false;
       })
     }
   }
@@ -34,7 +36,8 @@ export default{
 </script>
 
 <template>
-  <ProjectMain @next="getProject(store.currentPage + 1)" @previous="getProject(store.currentPage - 1)"></ProjectMain>
+  <ProjectMain v-if="store.loading === false" @next="getProject(store.currentPage + 1)" @previous="getProject(store.currentPage - 1)"></ProjectMain>
+  <LoadingAppVue v-else></LoadingAppVue>
 </template>
 
 <style lang="scss">
