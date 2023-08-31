@@ -1,43 +1,27 @@
-<script>
-import axios from 'axios';
-import {store} from './store';
-import ProjectMain from "./components/ProjectMain.vue";
+<script>import {store} from './store';
+import AppProjects from "./pages/AppProjects.vue";
+import FooterApp from "./components/FooterApp.vue";
 import LoadingAppVue from './components/LoadingApp.vue';
+import HeaderAppVue from './components/HeaderApp.vue';
 export default{
   components:{
-    ProjectMain,
-    LoadingAppVue
+    AppProjects,
+    LoadingAppVue,
+    HeaderAppVue,
+    FooterApp
   },
   data(){
     return {
-      axios,
       store
-    }
-  },
-  mounted(){
-    this.getProject(1);
-  },
-  methods:{
-    //funzione richiesta axios
-    getProject(n_page){
-      axios.get(`${store.basicUrl}/api/projects`, {
-        params: {
-          page : n_page
-        }
-      }).then((risp) => {
-        store.projects = risp.data.response.data;
-        store.currentPage = risp.data.response.current_page;
-        store.totalPages = risp.data.response.last_page;
-        store.loading = false;
-      })
     }
   }
 };
 </script>
 
 <template>
-  <ProjectMain v-if="store.loading === false" @next="getProject(store.currentPage + 1)" @previous="getProject(store.currentPage - 1)"></ProjectMain>
-  <LoadingAppVue v-else></LoadingAppVue>
+  <HeaderAppVue/>
+  <router-view></router-view>
+  <FooterApp/>
 </template>
 
 <style lang="scss">
