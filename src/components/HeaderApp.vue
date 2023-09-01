@@ -9,7 +9,7 @@ export default {
                 },
                 {
                   link:'Progetti',
-                  path:'projects'
+                  path:'/projects'
                 },
                 {
                   link:'Tipi',

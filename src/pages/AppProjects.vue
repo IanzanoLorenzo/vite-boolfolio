@@ -40,7 +40,7 @@ export default{
 </script>
 
 <template>
-   <div class="container mt-5" v-if="store.loading === false">
+   <div class="container mt-5" v-if="!store.loading">
     <div class="row align-items-stretch">
       <div class="col-6 col-md-3 pb-5" v-for="project in projects" :key="project.id">
         <ProjectCard :project="project" />

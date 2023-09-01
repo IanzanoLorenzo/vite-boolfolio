@@ -1,4 +1,5 @@
-<script>import {store} from './store';
+<script>
+import {store} from './store';
 import AppProjects from "./pages/AppProjects.vue";
 import FooterApp from "./components/FooterApp.vue";
 import LoadingAppVue from './components/LoadingApp.vue';
