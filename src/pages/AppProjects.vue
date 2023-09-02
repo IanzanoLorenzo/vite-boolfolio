@@ -40,9 +40,9 @@ export default{
 </script>
 
 <template>
-   <div class="container mt-5" v-if="!store.loading">
+  <div class="container mt-5" v-if="!store.loading">
     <div class="row align-items-stretch">
-      <div class="col-6 col-md-3 pb-5" v-for="project in projects" :key="project.id">
+      <div class="col-6 col-md-4 col-lg-3 pb-5" v-for="project in projects" :key="project.id">
         <ProjectCard :project="project" />
       </div>
       <div class="col-12 d-flex justify-content-center">
@@ -60,8 +60,8 @@ export default{
         </ul>
       </div>
     </div>
-   </div>
-   <LoadingAppVue v-else/> 
+  </div>
+  <LoadingAppVue v-else/> 
 </template>
 
 <style lang="scss">

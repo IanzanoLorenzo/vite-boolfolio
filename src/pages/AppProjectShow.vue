@@ -19,25 +19,29 @@ export default {
         }
     },
     mounted() {
+        store.loading = true;
         this.getProject(this.$route.params.slug);
     },
     methods: {
         getProject(slug){
-            store.loading = true;
             axios.get(`${store.basicUrl}/api/projects/random`).then((risp) => {
                 this.randomProjects = risp.data.response;
             });
             axios.get(`${store.basicUrl}/api/projects/${slug}`).then((risp) => {
-                this.project = risp.data.response;
-                this.typeName = this.project.type.name;
-                store.loading = false;
+                if(risp.data.status){
+                    this.project = risp.data.response;
+                    this.typeName = this.project.type.name;
+                    store.loading = false;
+                }else{
+                    this.$router.push({name: 'project-not-found'})
+                }
             });
         }
     },
 }
 </script>
 <template>
-    <div class="container mt-5" v-if="!store.loading">
+    <div class="container mt-5" v-if="!store.loading" :key="project.id">
        <h2>{{ this.project.project_name }}</h2>
        <div class="row mb-5">
             <div class="col-12 col-md-5">
@@ -59,7 +63,7 @@ export default {
             
        </div>
        <div class="row align-items-stretch">
-            <div class="col-6 col-md-2 pb-5" v-for="single_project in randomProjects" :key="single_project.id">
+            <div class="col-6 col-md-4 col-lg-3 pb-5" v-for="single_project in randomProjects" :key="single_project.id">
                 <ProjectCard :project="single_project" />
             </div>
         </div>
