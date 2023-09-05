@@ -4,12 +4,14 @@ import AppProjects from "./pages/AppProjects.vue";
 import FooterApp from "./components/FooterApp.vue";
 import LoadingAppVue from './components/LoadingApp.vue';
 import HeaderAppVue from './components/HeaderApp.vue';
+import ContactUs from './components/ContactUs.vue';
 export default{
   components:{
     AppProjects,
     LoadingAppVue,
     HeaderAppVue,
-    FooterApp
+    FooterApp,
+    ContactUs
   },
   data(){
     return {
@@ -22,6 +24,7 @@ export default{
 <template>
   <HeaderAppVue/>
   <router-view></router-view>
+  <ContactUs/>
   <FooterApp/>
 </template>
 
