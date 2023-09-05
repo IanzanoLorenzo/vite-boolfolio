@@ -8,10 +8,7 @@ export default {
         return {
             store
         }
-    },
-    created() {
-        console.log(this.$route.name);
-    },
+    }
 }
 </script>
 <template>
@@ -25,7 +22,7 @@ export default {
         </div>
     </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
     .card {
         overflow: hidden;
         border-radius: 15px !important;

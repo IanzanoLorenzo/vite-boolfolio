@@ -36,7 +36,7 @@ export default {
               <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                   <li class="nav-item" v-for="(item, index) in navbar" :key="index">
-                    <router-link class="nav-link" :to="item.path">{{ item.link }}</router-link>
+                    <router-link class="nav-link" :to="item.path" :class="this.$route.path == item.path ? 'active' : ''">{{ item.link }}</router-link>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
