@@ -23,11 +23,11 @@ export default{
 
 <template>
   <HeaderAppVue/>
-  <router-view></router-view>
-  <ContactUs/>
-  <FooterApp/>
+  <router-view class="view_personal"></router-view>
+  <ContactUs class="mb-5 pb-5"/>
+  <FooterApp class="mt-5"/>
 </template>
 
 <style lang="scss">
-@use './styles/generals.scss'
+@use './styles/generals.scss';
 </style>
